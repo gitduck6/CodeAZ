@@ -124,12 +124,12 @@ if config["features"]["xp"].get("enabled"):
         for i, (user_id, xp) in enumerate(top_users, start=1):
             member = ctx.guild.get_member(int(user_id))
             name = member.display_name if member else f"User ID {user_id}"
-            leaderboard += f"{i}. {name} — {xp} XP\n"
+            leaderboard += f"{i}. {name} - {xp} XP\n"
 
         await ctx.send(leaderboard)
 
     if config["features"]["xp"]["send"].get("enabled"):
-        @bot.command(name="xpsend")
+        @bot.command(name="xp-send")
         @commands.cooldown(1, xp_send_cooldowon, commands.BucketType.user)
         async def xpsend(ctx, amount: int, *members: discord.Member):
             if xp_send_role not in [r.id for r in ctx.author.roles]:
