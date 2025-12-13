@@ -22,6 +22,10 @@ if config["features"]["xp"]["send"].get("enabled"):
     xp_send_role = config["features"]["xp"]["send"].get("roleID")
     xp_send_cooldowon = config["features"]["xp"]["send"].get("cooldown")
 
+if config["features"]["xp"]["role"].get("enabled"):
+    xp_role_treshold = config["features"]["xp"]["role"].get("treshold")
+    xp_role_role = config["features"]["xp"]["role"].get("roleID")
+
 if config["features"]["welcome"].get("enabled"):
     welcome_channel = config["features"]["welcome"].get("channelID")
     welcome_message = config["features"]["welcome"].get("message")
@@ -97,9 +101,18 @@ if config["features"]["xp"].get("enabled"):
 
         user_id = str(message.author.id)
         xp_data[user_id] = xp_data.get(user_id, 0) + 1
+        current_xp = xp_data[user_id]
 
         with open(XP_JSON, "w", encoding="utf-8") as file:
             json.dump(xp_data, file, indent=4)
+
+        if current_xp >= xp_role_treshold:
+            guild = message.guild
+            member = message.author
+            role = discord.utils.get(guild.roles, id=xp_role_role)
+            if role and role not in member.roles:
+                await member.add_roles(role)
+                logger.info(f"Assigned role '{role.name}' to {member.name} for reaching {current_xp} XP")
 
         await bot.process_commands(message)
 

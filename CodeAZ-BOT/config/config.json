@@ -15,6 +15,11 @@
         "enabled": false,
         "cooldown": 0,
         "roleID": 0
+      },
+      "role": {
+        "enabled": false,
+        "treshold": 0,
+        "roleID": 0
       }
     },
     "welcome": {
