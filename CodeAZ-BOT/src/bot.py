@@ -137,7 +137,7 @@ if config["features"]["xp"].get("enabled"):
             sorted_users = sorted(xp_data.items(), key=lambda x: x[1], reverse=True)
 
             rank = next((i + 1 for i, (uid, _) in enumerate(sorted_users) if uid == user_id), 0)
-            await ctx.send(f"\u200b{rank}. {member.display_name} - {xp} XP")
+            await ctx.reply(f"\u200b{rank}. {member.display_name} - {xp} XP")
             return
 
         top_users = sorted(xp_data.items(), key=lambda x: x[1], reverse=True)[:10]
@@ -148,7 +148,7 @@ if config["features"]["xp"].get("enabled"):
             name = member.display_name if member else f"User ID {user_id}"
             leaderboard += f"{i}. {name} - {xp} XP\n"
 
-        await ctx.send(leaderboard)
+        await ctx.reply(leaderboard)
 
     if config["features"]["xp"]["send"].get("enabled"):
         @bot.command(name="xp-send")
@@ -210,7 +210,6 @@ if config["features"]["xp"].get("enabled"):
                 return
 
             if amount > 1000:
-                ctx.reply("Maksimum mərc miqdarı 1000 XP-dir!")
                 return
             
             with open(XP_JSON, "r", encoding="utf-8") as file:
