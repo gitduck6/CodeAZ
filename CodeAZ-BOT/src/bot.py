@@ -168,7 +168,7 @@ if config["features"]["xp"].get("enabled"):
                 
             logger.info(f"{ctx.author.name} sent {amount} XP to {[m.name for m in members]}")
 
-            await ctx.reply(f"{amount} XP Uğurla Göndərildi!")
+            await ctx.reply(f"{amount} XP Göndərildi!")
     
     if config["features"]["xp"]["give"].get("enabled"):
         @bot.command(name="xp-give")
@@ -197,7 +197,7 @@ if config["features"]["xp"].get("enabled"):
 
             logger.info(f"{ctx.author.name} gave {amount} XP to {member.name}")
 
-            await ctx.reply(f"{amount} XP Uğurla Verildi!")
+            await ctx.reply(f"{amount} XP Verildi!")
 
     if config["features"]["xp"]["bet"].get("enabled"):
         @bot.command(name="xp-bet")
