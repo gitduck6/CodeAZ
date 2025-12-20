@@ -1,6 +1,7 @@
 from path import CONFIG_JSON, XP_JSON
 from discord.ext import commands
 import discord
+import random
 import json
 from log import logger
 
@@ -25,6 +26,14 @@ if config["features"]["xp"]["send"].get("enabled"):
 if config["features"]["xp"]["role"].get("enabled"):
     xp_role_treshold = config["features"]["xp"]["role"].get("treshold")
     xp_role_role = config["features"]["xp"]["role"].get("roleID")
+
+if config["features"]["xp"]["give"].get("enabled"):
+    xp_give_role = config["features"]["xp"]["give"].get("roleID")
+    xp_give_cooldown = config["features"]["xp"]["give"].get("cooldown")
+
+if config["features"]["xp"]["bet"].get("enabled"):
+    xp_bet_role = config["features"]["xp"]["bet"].get("roleID")
+    xp_bet_cooldown = config["features"]["xp"]["bet"].get("cooldown")
 
 if config["features"]["welcome"].get("enabled"):
     welcome_channel = config["features"]["welcome"].get("channelID")
@@ -157,5 +166,67 @@ if config["features"]["xp"].get("enabled"):
                 json.dump(xp, f, indent=4)
                 
             logger.info(f"{ctx.author.name} sent {amount} XP to {[m.name for m in members]}")
+    
+    if config["features"]["xp"]["give"].get("enabled"):
+        @bot.command(name="xp-give")
+        @commands.cooldown(1, xp_give_cooldown, commands.BucketType.user)
+        async def xp_give(ctx, amount: int, member: discord.Member):
+            if xp_give_role not in [r.id for r in ctx.author.roles]:
+                return
+            
+            if amount <= 0:
+                return
+            
+            with open(XP_JSON, "r", encoding="utf-8") as file:
+                xp = json.load(file)
+
+            giver = str(ctx.author.id)
+            receiver = str(member.id)
+
+            if xp.get(giver, 0) < amount:
+                return
+
+            xp[giver] -= amount
+            xp[receiver] = xp.get(receiver, 0) + amount
+
+            with open(XP_JSON, "w", encoding="utf-8") as file:
+                json.dump(xp, file, indent=4)
+
+            logger.info(f"{ctx.author.name} gave {amount} XP to {member.name}")
+
+    if config["features"]["xp"]["bet"].get("enabled"):
+        @bot.command(name="xp-bet")
+        @commands.cooldown(1, xp_bet_cooldown, commands.BucketType.user)
+        async def xp_bet(ctx, amount: int):
+            if xp_bet_role not in [r.id for r in ctx.author.roles]:
+                return
+            
+            if amount <= 0:
+                return
+            
+            with open(XP_JSON, "r", encoding="utf-8") as file:
+                xp = json.load(file)
+
+            bettor = str(ctx.author.id)
+
+            if xp.get(bettor, 0) < amount:
+                return
+            
+            logger.info(f"{ctx.author.name} bet {amount}")
+
+            winner = random.choice([True, False])
+
+            if winner:
+                xp[bettor] += amount
+            else:
+                xp[bettor] -= amount
+
+            with open(XP_JSON, "w", encoding="utf-8") as file:
+                json.dump(xp, file, indent=4)
+            
+            if winner:
+                logger.info(f"{ctx.author.name} won {amount}")
+            else:
+                logger.info(f"{ctx.author.name} lost {amount}")
 
 bot.run(discord_token)

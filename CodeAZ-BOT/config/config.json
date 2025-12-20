@@ -20,6 +20,16 @@
         "enabled": false,
         "treshold": 0,
         "roleID": 0
+      },
+      "give": {
+        "enabled": false,
+        "cooldown": 0,
+        "roleID": 0
+      },
+      "bet": {
+        "enabled": false,
+        "cooldown": 0,
+        "roleID": 0
       }
     },
     "welcome": {
