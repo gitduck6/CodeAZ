@@ -22,7 +22,7 @@ if config["features"]["channel"].get("enabled"):
 
 if config["features"]["xp"]["send"].get("enabled"):
     xp_send_role = config["features"]["xp"]["send"].get("roleID")
-    xp_send_cooldowon = config["features"]["xp"]["send"].get("cooldown")
+    xp_send_cooldown = config["features"]["xp"]["send"].get("cooldown")
     xp_send_maximum = config["features"]["xp"]["send"].get("maximum")
 
 if config["features"]["xp"]["role"].get("enabled"):
@@ -155,7 +155,7 @@ if config["features"]["xp"].get("enabled"):
 
     if config["features"]["xp"]["send"].get("enabled"):
         @bot.command(name="xp-send")
-        @commands.cooldown(1, xp_send_cooldowon, xp_send_maximum, commands.BucketType.user)
+        @commands.cooldown(1, xp_send_cooldown, commands.BucketType.user)
         async def xpsend(ctx, amount: int, *members: discord.Member):
             if xp_send_role not in [r.id for r in ctx.author.roles]:
                 return
@@ -181,7 +181,7 @@ if config["features"]["xp"].get("enabled"):
     
     if config["features"]["xp"]["give"].get("enabled"):
         @bot.command(name="xp-give")
-        @commands.cooldown(1, xp_give_cooldown, xp_give_maximum, commands.BucketType.user)
+        @commands.cooldown(1, xp_give_cooldown, commands.BucketType.user)
         async def xp_give(ctx, amount: int, member: discord.Member):
             if xp_give_role not in [r.id for r in ctx.author.roles]:
                 return
@@ -213,7 +213,7 @@ if config["features"]["xp"].get("enabled"):
 
     if config["features"]["xp"]["bet"].get("enabled"):
         @bot.command(name="xp-bet")
-        @commands.cooldown(1, xp_bet_cooldown, xp_bet_maximum, commands.BucketType.user)
+        @commands.cooldown(1, xp_bet_cooldown, commands.BucketType.user)
         async def xp_bet(ctx, amount: int):
             if xp_bet_role not in [r.id for r in ctx.author.roles]:
                 return
