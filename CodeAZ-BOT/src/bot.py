@@ -235,7 +235,7 @@ if config["features"]["xp"].get("enabled"):
             else:
                 logger.info(f"{ctx.author.name} lost {amount}")
 
-            await ctx.send(f"{ctx.author.mention} {amount} XP {"qazandın" if winner else "uduzdun"}!")
+            await ctx.send(f"{ctx.author.mention} {amount} XP {'qazandın' if winner else 'uduzdun'}!")
 
     @xpsend.error
     async def xp_send_error(ctx, error):
