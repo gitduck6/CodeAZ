@@ -14,6 +14,7 @@
       "send": {
         "enabled": false,
         "cooldown": 0,
+        "maximum": 0,
         "roleID": 0
       },
       "role": {
@@ -24,11 +25,13 @@
       "give": {
         "enabled": false,
         "cooldown": 0,
+        "maximum": 0,
         "roleID": 0
       },
       "bet": {
         "enabled": false,
         "cooldown": 0,
+        "maximum": 0,
         "roleID": 0
       }
     },

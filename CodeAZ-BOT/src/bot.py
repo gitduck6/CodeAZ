@@ -152,9 +152,15 @@ if config["features"]["xp"].get("enabled"):
 
     if config["features"]["xp"]["send"].get("enabled"):
         @bot.command(name="xp-send")
-        @commands.cooldown(1, xp_send_cooldowon, commands.BucketType.user)
+        @commands.cooldown(1, xp_send_cooldowon, xp_send_maximum, commands.BucketType.user)
         async def xpsend(ctx, amount: int, *members: discord.Member):
             if xp_send_role not in [r.id for r in ctx.author.roles]:
+                return
+
+            if amount <= 0:
+                return
+
+            if amount > xp_send_maximum:
                 return
 
             with open(XP_JSON, "r", encoding="utf-8") as f:
@@ -172,12 +178,15 @@ if config["features"]["xp"].get("enabled"):
     
     if config["features"]["xp"]["give"].get("enabled"):
         @bot.command(name="xp-give")
-        @commands.cooldown(1, xp_give_cooldown, commands.BucketType.user)
+        @commands.cooldown(1, xp_give_cooldown, xp_give_maximum, commands.BucketType.user)
         async def xp_give(ctx, amount: int, member: discord.Member):
             if xp_give_role not in [r.id for r in ctx.author.roles]:
                 return
             
             if amount <= 0:
+                return
+            
+            if amount > xp_give_maximum:
                 return
             
             with open(XP_JSON, "r", encoding="utf-8") as file:
@@ -201,7 +210,7 @@ if config["features"]["xp"].get("enabled"):
 
     if config["features"]["xp"]["bet"].get("enabled"):
         @bot.command(name="xp-bet")
-        @commands.cooldown(1, xp_bet_cooldown, commands.BucketType.user)
+        @commands.cooldown(1, xp_bet_cooldown, xp_bet_maximum, commands.BucketType.user)
         async def xp_bet(ctx, amount: int):
             if xp_bet_role not in [r.id for r in ctx.author.roles]:
                 return
@@ -209,7 +218,7 @@ if config["features"]["xp"].get("enabled"):
             if amount <= 0:
                 return
 
-            if amount > 1000:
+            if amount > xp_bet_maximum:
                 return
             
             with open(XP_JSON, "r", encoding="utf-8") as file:
