@@ -141,7 +141,7 @@ if config["features"]["xp"].get("enabled"):
 
         await bot.process_commands(message)
 
-    @bot.command(name="xp")
+    @bot.command(name=config["features"]["meme"].get("command-name"))
     async def xp_leaderboard(ctx, member: discord.Member = None):
         with open(XP_JSON, "r", encoding="utf-8") as file:
             xp_data = json.load(file)
@@ -167,7 +167,7 @@ if config["features"]["xp"].get("enabled"):
         await ctx.reply(leaderboard)
 
     if config["features"]["xp"]["send"].get("enabled"):
-        @bot.command(name="xp-send")
+        @bot.command(name=config["features"]["xp"]["send"].get("command_name"))
         @commands.cooldown(1, xp_send_cooldown, commands.BucketType.user)
         async def xp_send(ctx, amount: int, *members: discord.Member):
             if xp_send_role not in [r.id for r in ctx.author.roles]:
@@ -199,7 +199,7 @@ if config["features"]["xp"].get("enabled"):
                 await ctx.reply(f"Bu əmri təkrar etmək üçün {seconds_left} saniyə gözləməlisiniz!")
     
     if config["features"]["xp"]["give"].get("enabled"):
-        @bot.command(name="xp-give")
+        @bot.command(name=config["features"]["xp"]["give"].get("command_name"))
         @commands.cooldown(1, xp_give_cooldown, commands.BucketType.user)
         async def xp_give(ctx, amount: int, member: discord.Member):
             if xp_give_role not in [r.id for r in ctx.author.roles]:
@@ -237,7 +237,7 @@ if config["features"]["xp"].get("enabled"):
                 await ctx.reply(f"Bu əmri təkrar etmək üçün {seconds_left} saniyə gözləməlisiniz!")
 
     if config["features"]["xp"]["bet"].get("enabled"):
-        @bot.command(name="xp-bet")
+        @bot.command(name=config["features"]["xp"]["bet"].get("command-name"))
         @commands.cooldown(1, xp_bet_cooldown, commands.BucketType.user)
         async def xp_bet(ctx, amount: int):
             if xp_bet_role not in [r.id for r in ctx.author.roles]:
@@ -285,7 +285,7 @@ if config["features"]["xp"].get("enabled"):
 # -- Meme -- #
 
 if config["features"]["meme"].get("enabled"):
-    @bot.command(name="meme")
+    @bot.command(name=config["features"]["meme"].get("command-name"))
     @commands.cooldown(1, meme_cooldown, commands.BucketType.user)
     async def meme(ctx):
 
