@@ -352,10 +352,14 @@ if config["features"]["meme"].get("enabled"):
         async with aiohttp.ClientSession() as session:
             async with session.get("https://meme-api.com/gimme") as resp:
                 if resp.status != 200:
+                    await ctx.reply(f"Xəta baş verdi! zəhmət olmasa bir necə dəqiqə sonra təkrar cəhd edin.")
+                    meme.reset_cooldown(ctx)
                     return
                 data = await resp.json()
                 if not meme_nsfw:
                     if data.get("nsfw") and not ctx.channel.is_nsfw():
+                        #await ctx.reply(f"Bu kanal sfw-dir.")
+                        meme.reset_cooldown(ctx)
                         return
 
         embed = discord.Embed(
