@@ -291,12 +291,18 @@ if config["features"]["xp"].get("enabled"):
         @commands.cooldown(1, xp_bet_cooldown, commands.BucketType.user)
         async def xp_bet(ctx, amount: int):
             if xp_bet_role not in [r.id for r in ctx.author.roles]:
+                await ctx.reply(f"Bu əmr üçün sizdə yetərli rol yoxdur!")
+                xp_bet.reset_cooldown(ctx)
                 return
             
             if amount <= 0:
+                await ctx.reply(f"Miqdar 0-dan çox olmalıdır.")
+                xp_bet.reset_cooldown(ctx)
                 return
 
             if amount > xp_bet_maximum:
+                await ctx.reply(f"Miqdar {xp_bet_maximum}-dan az olmalıdır.")
+                xp_bet.reset_cooldown(ctx)
                 return
             
             with open(XP_JSON, "r", encoding="utf-8") as file:
@@ -305,6 +311,8 @@ if config["features"]["xp"].get("enabled"):
             bettor = str(ctx.author.id)
 
             if xp.get(bettor, 0) < amount:
+                await ctx.reply(f"Sizdə yetər qədər XP yoxdur.")
+                xp_bet.reset_cooldown(ctx)
                 return
             
             logger.info(f"{ctx.author.name} bet {amount}")
