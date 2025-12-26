@@ -1,3 +1,22 @@
+
+"""
+~Docboard for CodeAZ-BOT/src/bot.py
+
+# A simple bot designed 
+# for the CodeAZ community server
+# with the discord.py API
+# by the CodeAZ community
+
+### Current features:
+- xp system
+- a leaderboard for the xp system
+- simple xp transfer commands, such as xp-give and xp-send
+- a basic "gambling" command with a 10% winrate
+- a meme command using the meme-api.com API
+- modifiable through the config file
+
+"""
+
 from path import CONFIG_JSON, XP_JSON
 from discord.ext import commands
 import discord
@@ -6,6 +25,7 @@ import json
 import math
 import aiohttp
 from log import logger
+
 #======================
 # -- Configuration -- #
 #======================
@@ -311,7 +331,7 @@ if config["features"]["xp"].get("enabled"):
             if isinstance(error, commands.CommandOnCooldown):
                 seconds_left = math.ceil(error.retry_after)
                 await ctx.reply(f"Bu əmri təkrar etmək üçün {seconds_left} saniyə gözləməlisiniz!")
-                
+
 #======================
 # -- Meme -- #
 #======================
