@@ -39,7 +39,7 @@
         "roleID": 1424030146536411146
       },
       "daily": {
-        "enabled": false,
+        "enabled": true,
         "command": "xp-daily",
         "maximum": 50,
         "minimum": 10,
