@@ -31,8 +31,6 @@
 7.1. İcazəsiz hər hansı kommersiya və ya şəxsi reklamın yayılması qadağandır.  
 7.2. Bu pozuntu IV dərəcə — Çox Ağır Pozuntu hesab olunur və uzunmüddətli və ya daimi ban ilə nəticələnə bilər.  
 
----
-
 ### II FƏSİL — SƏLAHİYYƏTLƏR VƏ VƏZİFƏLƏR
 
 **Maddə 9. Moderatorlar**  
@@ -42,8 +40,6 @@
 **Maddə 11. Üzvlər**  
 11.1. Bütün üzvlər Konstitusiyanın qoruduğu əsas hüquqlara malikdir.  
 11.2. Üzvlər qaydalara eksiksiz əməl etməlidir.  
-
----
 
 ### III FƏSİL — SƏLAHİYYƏTLƏRİN TƏTBİQİ QAYDASI
 
@@ -57,8 +53,6 @@
 **Maddə 14. Təcili Hallar**  
 14.1. Təcili hallarda, moderatorlar dərhal təhlükəni aradan qaldıra bilər.  
 14.2. Lakin hər bir təcili tədbir 1 saat ərzində sənədləşdirilməlidir.  
-
----
 
 ### IV FƏSİL — ÜMUMİ DAVRANIŞ QAYDALARI
 
@@ -101,8 +95,6 @@
 24.1. Yalnız öz işinizi təqdim edin.  
 24.2. Saxta səsvermə, multi-account istifadə ban ilə cəzalandırılır.  
 
----
-
 ### V FƏSİL — POZUNTU TİPLƏRİ VƏ CƏZA TƏTBİQLƏRİ
 
 **Maddə 25. I Dərəcə — Yüngül Pozuntular**  
@@ -130,8 +122,6 @@ Misallar:
 - Şəxsi məlumat yayılması  
 - Serverə ziyan vurma məqsədi  
 - Reklam qadağasının pozulması  
-
----
 
 ### VI FƏSİL — MƏHKƏMƏ VƏ İNTİZAM PROSESLƏRİ
 
