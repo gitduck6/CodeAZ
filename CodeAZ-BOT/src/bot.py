@@ -96,6 +96,8 @@ if config["features"]["welcome"].get("enabled"):
                 await member.add_roles(role)
                 logger.info(f"Assigned role '{role.name}' to {member.name}")
 
+# -- Goodbye -- #
+
 if config["features"]["goodbye"].get("enabled"):
     @bot.event
     async def on_member_remove(member):
