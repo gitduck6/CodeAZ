@@ -54,6 +54,10 @@ if config["features"]["welcome"].get("enabled"):
     welcome_message = config["features"]["welcome"].get("message")
     welcome_role = config["features"]["welcome"]["role"].get("roleID")
 
+if config["features"]["goodbye"].get("enabled"):
+    goodbye_channel = config["features"]["goodbye"].get("channelID")
+    goodbye_message = config["features"]["goodbye"].get("message")
+
 if config["features"]["meme"].get("enabled"):
     meme_command = config["features"]["meme"].get("command")
     meme_cooldown = config["features"]["meme"].get("cooldown")
@@ -91,6 +95,14 @@ if config["features"]["welcome"].get("enabled"):
             if role:
                 await member.add_roles(role)
                 logger.info(f"Assigned role '{role.name}' to {member.name}")
+
+if config["features"]["goodbye"].get("enabled"):
+    @bot.event
+    async def on_member_remove(member):
+        logger.info(f"Member left: {member.name} (ID: {member.id})")
+        channel = bot.get_channel(goodbye_channel)
+        if channel:
+            await channel.send(f"{goodbye_message}, <@{member.id}> 👋")
 
 # -- Reaction Role -- #
 

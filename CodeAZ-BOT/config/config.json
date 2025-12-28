@@ -53,7 +53,12 @@
       "role": {
         "enabled": false,
         "roleID": 0
-      }
+      },
+    "goodbye": {
+      "enabled": false,
+      "message": "",
+      "channelID": 0
+    }
     },
     "meme": {
       "enabled": false,

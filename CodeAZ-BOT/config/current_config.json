@@ -53,7 +53,12 @@
       "role": {
         "enabled": true,
         "roleID": 1422169853753819277
-      }
+      },
+    "goodbye": {
+      "enabled": true,
+      "message": "Xoş getdin",
+      "channelID": 1414896752925999164
+    }
     },
     "meme": {
       "enabled": true,
