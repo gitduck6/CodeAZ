@@ -1,5 +1,5 @@
-# CODEAZ COMMUNITY KONSTİTUSİYASI
-## Versiya 1.1 – Təsis Sənədi
+# CODEAZ COMMUNITY KONSTİTUSİYASI  
+## Versiya 1.2 – Təsis Sənədi
 
 ### I FƏSİL — ÜMUMİ PRİNSİPLƏR
 
@@ -27,6 +27,12 @@
 6.1. Üzvlər intizam tədbirləri zamanı müdafiə hüququna malikdir.  
 6.2. Təcili hal istisna olmaqla, heç bir üzv səbəbsiz cəzalandırıla bilməz.  
 
+**Maddə 7. Reklam Qadağası**  
+7.1. İcazəsiz hər hansı kommersiya və ya şəxsi reklamın yayılması qadağandır.  
+7.2. Bu pozuntu IV dərəcə — Çox Ağır Pozuntu hesab olunur və uzunmüddətli və ya daimi ban ilə nəticələnə bilər.  
+
+---
+
 ### II FƏSİL — SƏLAHİYYƏTLƏR VƏ VƏZİFƏLƏR
 
 **Maddə 9. Moderatorlar**  
@@ -35,7 +41,9 @@
 
 **Maddə 11. Üzvlər**  
 11.1. Bütün üzvlər Konstitusiyanın qoruduğu əsas hüquqlara malikdir.  
-11.2. Üzvlər qaydalara eksiksiz əməl etməlidir.
+11.2. Üzvlər qaydalara eksiksiz əməl etməlidir.  
+
+---
 
 ### III FƏSİL — SƏLAHİYYƏTLƏRİN TƏTBİQİ QAYDASI
 
@@ -48,7 +56,9 @@
 
 **Maddə 14. Təcili Hallar**  
 14.1. Təcili hallarda, moderatorlar dərhal təhlükəni aradan qaldıra bilər.  
-14.2. Lakin hər bir təcili tədbir 1 saat ərzində sənədləşdirilməlidir.
+14.2. Lakin hər bir təcili tədbir 1 saat ərzində sənədləşdirilməlidir.  
+
+---
 
 ### IV FƏSİL — ÜMUMİ DAVRANIŞ QAYDALARI
 
@@ -59,7 +69,7 @@
 
 **Maddə 16. Spam və Flood**  
 16.1. Təkrar mesajlar, emoji yağışı, @mention sui-istifadəsi qadağandır.  
-16.2. Başlıq və ya kaps lokdan sui-istifadə səs-küy hesab olunur.  
+16.2. Başlıq və ya CAPS lock-dan sui-istifadə səs-küy hesab olunur.  
 
 **Maddə 17. Mövzu Uyğunluğu**  
 17.1. Hər kanal öz mövzusu üzrə istifadə edilməlidir.  
@@ -89,7 +99,9 @@
 
 **Maddə 24. Yarışmalar və Hadisələr**  
 24.1. Yalnız öz işinizi təqdim edin.  
-24.2. Saxta səsvermə, multi-account istifadə ban ilə cəzalandırılır.
+24.2. Saxta səsvermə, multi-account istifadə ban ilə cəzalandırılır.  
+
+---
 
 ### V FƏSİL — POZUNTU TİPLƏRİ VƏ CƏZA TƏTBİQLƏRİ
 
@@ -117,7 +129,9 @@ Misallar:
 - Qəsdən güc sui-istifadəsi  
 - Şəxsi məlumat yayılması  
 - Serverə ziyan vurma məqsədi  
-Cəza: uzunmüddətli və ya daimi ban.  
+- Reklam qadağasının pozulması  
+
+---
 
 ### VI FƏSİL — MƏHKƏMƏ VƏ İNTİZAM PROSESLƏRİ
 
@@ -140,4 +154,4 @@ Cəza: uzunmüddətli və ya daimi ban.
 
 **Maddə 32. Apellyasiya**  
 32.1. Yeni sübut və ya proses xətası olduqda 48 saat ərzində apellyasiya mümkündür.  
-32.2. Apellyasiya işinə müstəqil moderator baxır.
+32.2. Apellyasiya işinə müstəqil moderator baxır.  
