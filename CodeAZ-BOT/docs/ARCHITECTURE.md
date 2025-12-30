@@ -9,23 +9,6 @@ Written by CodeAZ Community
 - Reaction Roles
 - Meme command via meme-api
 
-### Installation:
-1. Create the bot in the Discord Developer Portal
-2. Enable all bot intents in the Bot tab.
-3. Enable following bot permissions:
-    - Read Messages / View Channels
-    - Send Messages
-    - Read Message History
-    - Embed Links (for memes)
-    - Add Reactions
-    - Use External Emojis (if reaction roles use them)
-4. Generate the invite link, select the following scopes in the OAuth2 tab:
-    - bot
-    - application.commands
-5. Use the link and add the bot to your server.
-6. Modify the config and or the source to your desire. Do not forget to add the token to config.
-7. Run the program! preferably host it in a server.
-
 ### Configuration
 
 We have tried to keep the bot as modular as possible, making sure most things can be disabled/enabled through the config file. Despite this, there are still a few imperfections. There are 2 files of configs, one being the active one on our discord sever, and the other being a blank. I believe the config files are relatively intuitive, so please inform us of any confusing parts.
