@@ -4,6 +4,7 @@ import discord
 import random
 import json
 import math
+import asyncio
 import aiohttp
 from log import logger
 
@@ -48,6 +49,13 @@ if config["features"]["xp"]["daily"].get("enabled"):
     xp_daily_maximum = config["features"]["xp"]["daily"].get("maximum")
     xp_daily_minimum = config["features"]["xp"]["daily"].get("minimum")
     xp_daily_role = config["features"]["xp"]["daily"].get("roleID")
+
+if config["features"]["xp"]["event"].get("enabled"):
+    xp_event_start_command = config["features"]["xp"]["event"].get("start_command")
+    xp_event_stop_command = config["features"]["xp"]["event"].get("stop_command")
+    xp_event_min_xppm = config["features"]["xp"]["event"].get("min_xppm")
+    xp_event_max_xppm = config["features"]["xp"]["event"].get("max_xppm")
+    xp_event_cooldown = config["features"]["xp"]["event"].get("cooldown")
 
 if config["features"]["welcome"].get("enabled"):
     welcome_channel = config["features"]["welcome"].get("channelID")
@@ -357,6 +365,87 @@ if config["features"]["xp"].get("enabled"):
             if isinstance(error, commands.CommandOnCooldown):
                 seconds_left = math.ceil(error.retry_after)
                 await ctx.reply(f"Bu əmri təkrar etmək üçün {seconds_left} saniyə gözləməlisiniz!")
+
+    if config["features"]["xp"]["event"].get("enabled"):
+        xp_event_active = False
+        xp_event_vc_id = None
+        xp_event_xppm = 0
+        xp_event_task = None
+
+        async def xp_event_loop(bot):
+            global xp_event_active
+
+            while xp_event_active:
+                await asyncio.sleep(60)
+
+                with open(XP_JSON, "r", encoding="utf-8") as file:
+                    xp_data = json.load(file)
+
+                for guild in bot.guilds:
+                    vc = guild.get_channel(xp_event_vc_id)
+                    if not vc:
+                        continue
+
+                    for member in vc.members:
+                        if member.bot:
+                            continue
+
+                        user_id = str(member.id)
+                        xp_data[user_id] = xp_data.get(user_id, 0) + xp_event_xppm
+
+                with open(XP_JSON, "w", encoding="utf-8") as file:
+                    json.dump(xp_data, file, indent=4)
+
+        @bot.command(name=xp_event_start_command)
+        @commands.cooldown(1, xp_event_cooldown, commands.BucketType.user)
+        async def xp_event_start(ctx, xppm: int, vc: int):
+            global xp_event_active, xp_event_vc_id, xp_event_xppm, xp_event_task
+
+            if xp_event_active:
+                await ctx.reply("XP Event artıq aktivdir.")
+                xp_event_start.reset_cooldown(ctx)
+                return
+
+            if not (xp_event_min_xppm <= xppm <= xp_event_max_xppm):
+                await ctx.reply(f"XP / Dəqiqə {xp_event_min_xppm} ilə {xp_event_max_xppm} arasında olmalıdır.")
+                xp_event_start.reset_cooldown(ctx)
+                return
+
+            channel = ctx.guild.get_channel(vc)
+            if not channel or not isinstance(channel, discord.VoiceChannel):
+                await ctx.reply("Düzgün voice channel ID daxil edin.")
+                xp_event_start.reset_cooldown(ctx)
+                return
+
+            xp_event_active = True
+            xp_event_vc_id = vc
+            xp_event_xppm = xppm
+
+            xp_event_task = bot.loop.create_task(xp_event_loop(bot))
+
+            logger.info(f"XP Event started by {ctx.author.name} | VC: {vc} | XPPM: {xppm}")
+
+            await ctx.reply(f"XP Event başladı!\n" f"VC: {channel.name}\n" f"XP / dəqiqə: {xppm}")
+
+        @bot.command(name=xp_event_stop_command)
+        @commands.cooldown(1, xp_event_cooldown, commands.BucketType.user)
+        async def xp_event_stop(ctx):
+            global xp_event_active, xp_event_task
+
+            if not xp_event_active:
+                await ctx.reply("Aktiv XP Event yoxdur.")
+                xp_event_stop.reset_cooldown(ctx)
+                return
+
+            xp_event_active = False
+
+            if xp_event_task:
+                xp_event_task.cancel()
+                xp_event_task = None
+
+            logger.info(f"XP Event stopped by {ctx.author.name}")
+
+            await ctx.reply("XP Event dayandırıldı.")
 
 # -- Meme -- #
 

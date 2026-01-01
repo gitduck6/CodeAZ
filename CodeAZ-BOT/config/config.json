@@ -45,6 +45,14 @@
         "maximum": 0,
         "minimum": 0,
         "roleID": 0
+      },
+      "event": {
+        "enabled": false,
+        "start_command": "",
+        "stop_command": "",
+        "min_xppm": 0,
+        "max_xppm": 0,
+        "cooldown": 0
       }
     },
 

@@ -45,6 +45,14 @@
         "maximum": 50,
         "minimum": 10,
         "roleID": 1422169853753819277
+      },
+      "event": {
+        "enabled": true,
+        "start_command": "xp-event-start",
+        "stop_command": "xp-event-stop",
+        "min_xppm": 1,
+        "max_xppm": 5,
+        "cooldown": 43200
       }
     },
 
