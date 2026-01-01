@@ -357,7 +357,6 @@ if config["features"]["xp"].get("enabled"):
 
             xp[user] += amount
 
-            
             with open(XP_JSON, "w", encoding="utf-8") as file:
                 json.dump(xp, file, indent=4)
             
