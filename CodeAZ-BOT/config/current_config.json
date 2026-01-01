@@ -52,7 +52,8 @@
         "stop_command": "xp-event-stop",
         "min_xppm": 1,
         "max_xppm": 5,
-        "cooldown": 43200
+        "cooldown": 43200,
+        "roleID": 1445022706881003632
       }
     },
 

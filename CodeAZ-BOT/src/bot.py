@@ -56,6 +56,7 @@ if config["features"]["xp"]["event"].get("enabled"):
     xp_event_min_xppm = config["features"]["xp"]["event"].get("min_xppm")
     xp_event_max_xppm = config["features"]["xp"]["event"].get("max_xppm")
     xp_event_cooldown = config["features"]["xp"]["event"].get("cooldown")
+    xp_event_role = config["features"]["xp"]["event"].get("roleID")
 
 if config["features"]["welcome"].get("enabled"):
     welcome_channel = config["features"]["welcome"].get("channelID")
@@ -399,6 +400,11 @@ if config["features"]["xp"].get("enabled"):
         @bot.command(name=xp_event_start_command)
         @commands.cooldown(1, xp_event_cooldown, commands.BucketType.user)
         async def xp_event_start(ctx, xppm: int, vc: int):
+            if xp_event_role not in [r.id for r in ctx.author.roles]:
+                await ctx.reply(f"Bu əmr üçün sizdə yetərli rol yoxdur!")
+                xp_event_start.reset_cooldown(ctx)
+                return
+
             global xp_event_active, xp_event_vc_id, xp_event_xppm, xp_event_task
 
             if xp_event_active:
@@ -430,6 +436,11 @@ if config["features"]["xp"].get("enabled"):
         @bot.command(name=xp_event_stop_command)
         @commands.cooldown(1, xp_event_cooldown, commands.BucketType.user)
         async def xp_event_stop(ctx):
+            if xp_event_role not in [r.id for r in ctx.author.roles]:
+                await ctx.reply(f"Bu əmr üçün sizdə yetərli rol yoxdur!")
+                xp_event_stop.reset_cooldown(ctx)
+                return
+
             global xp_event_active, xp_event_task
 
             if not xp_event_active:
