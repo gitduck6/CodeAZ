@@ -99,12 +99,16 @@ if config["features"]["channel"].get("enabled"):
         return ctx.channel.id == channel
     
 # --- Help ---#
+
 if config["features"]["help"].get("enabled", 0):
     @bot.command(name=help_command)
-    async def help(ctx, command : str):
+    async def help(ctx, command : str = None):
 
-
-        
+        if command is None:
+            all_commands = command_description.keys()
+            await ctx.reply("Mövcud əmrlər:\n" + "\n".join(all_commands))
+        else:
+            await ctx.reply(f"{command} - {command_description.get(command,'Bu əmr üçün izah yoxdur!')}")
 
 # -- Welcome -- #
 
