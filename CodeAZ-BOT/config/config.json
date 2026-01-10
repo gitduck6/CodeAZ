@@ -57,6 +57,11 @@
       }
     },
 
+    "help": {
+      "enabled": false,
+      "command": ""
+    },
+
     "welcome": {
       "enabled": false,
       "message": "",
@@ -66,7 +71,7 @@
         "roleID": 0
       }
     },
-
+    
     "goodbye": {
       "enabled": false,
       "message": "",

@@ -57,6 +57,11 @@
       }
     },
 
+    "help": {
+      "enabled": true,
+      "command": "help"
+    },
+
     "welcome": {
       "enabled": true,
       "message": "Xoş gəldin",
