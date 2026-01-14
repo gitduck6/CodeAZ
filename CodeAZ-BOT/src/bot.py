@@ -100,7 +100,7 @@ if config["features"]["help"].get("enabled"):
     @bot.command(name=help_command)
     async def help(ctx, command: str = None):
 
-        if ("@" in command):
+        if "@" in command:
             return            
         
         default_explanation = help_explanation.get("default")
