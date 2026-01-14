@@ -99,6 +99,10 @@ if config["features"]["channel"].get("enabled"):
 if config["features"]["help"].get("enabled"):
     @bot.command(name=help_command)
     async def help(ctx, command: str = None):
+
+        if ("@" in command):
+            return            
+        
         default_explanation = help_explanation.get("default")
 
         if command is None:
