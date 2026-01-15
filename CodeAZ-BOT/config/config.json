@@ -13,6 +13,7 @@
     "xp": {
       "enabled": false,
       "command": "",
+      "cooldown": 0,
       "send": {
         "enabled": false,
         "command": "",

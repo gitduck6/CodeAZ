@@ -4,9 +4,14 @@ import discord
 import random
 import json
 import math
+import time
 import asyncio
 import aiohttp
 from log import logger
+
+# -- Constants -- #
+
+xp_cooldowns = {}
 
 # -- Configuration -- #
 
@@ -21,6 +26,7 @@ if config["features"]["channel"].get("enabled"):
 
 if config["features"]["xp"].get("enabled"):
     xp_leaderboard_command = config["features"]["xp"].get("command")
+    xp_cooldown = config["features"]["xp"].get("cooldown")
 
 if config["features"]["xp"]["send"].get("enabled"):
     xp_send_command = config["features"]["xp"]["send"].get("command")
@@ -181,6 +187,16 @@ if config["features"]["xp"].get("enabled"):
             xp_data = json.load(file)
 
         user_id = str(message.author.id)
+        now = time.time()
+
+        last_xp_time = xp_cooldowns.get(user_id, 0)
+
+        if now - last_xp_time < xp_cooldown:
+            await bot.process_commands(message)
+            return
+
+        xp_cooldowns[user_id] = now
+
         xp_data[user_id] = xp_data.get(user_id, 0) + 1
         current_xp = xp_data[user_id]
 
