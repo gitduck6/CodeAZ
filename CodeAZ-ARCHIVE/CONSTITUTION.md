@@ -1,5 +1,5 @@
 # CODEAZ COMMUNITY KONSTİTUSİYASI  
-## Versiya 1.2 – Təsis Sənədi
+## Versiya 1.3
 
 ### I FƏSİL — ÜMUMİ PRİNSİPLƏR
 
@@ -39,7 +39,7 @@
 
 **Maddə 11. Üzvlər**  
 11.1. Bütün üzvlər Konstitusiyanın qoruduğu əsas hüquqlara malikdir.  
-11.2. Üzvlər qaydalara eksiksiz əməl etməlidir.  
+11.2. Üzvlər qaydalara eksiksiz əməl etməlidir.
 
 ### III FƏSİL — SƏLAHİYYƏTLƏRİN TƏTBİQİ QAYDASI
 
@@ -93,7 +93,7 @@
 
 **Maddə 24. Yarışmalar və Hadisələr**  
 24.1. Yalnız öz işinizi təqdim edin.  
-24.2. Saxta səsvermə, multi-account istifadə ban ilə cəzalandırılır.  
+24.2. Saxta səsvermə, multi-account istifadə ban ilə cəzalandırılır.
 
 ### V FƏSİL — POZUNTU TİPLƏRİ VƏ CƏZA TƏTBİQLƏRİ
 
@@ -121,27 +121,4 @@ Misallar:
 - Qəsdən güc sui-istifadəsi  
 - Şəxsi məlumat yayılması  
 - Serverə ziyan vurma məqsədi  
-- Reklam qadağasının pozulması  
-
-### VI FƏSİL — MƏHKƏMƏ VƏ İNTİZAM PROSESLƏRİ
-
-**Maddə 29. Məhkəmə Hüququ**  
-29.1. I, II, və III dərəcə pozuntular üçün istifadəçi məhkəmə tələb edə bilər.  
-
-**Maddə 30. Prosess**  
-30.1. Açılış nitqləri  
-30.2. Sübutların təqdimatı  
-30.3. Sorğu-sual və qarşı suallar  
-30.4. Hakimin sualları  
-30.5. Yekun nitqlər  
-30.6. Hökm  
-30.7. Cəzanın təyin edilməsi  
-
-**Maddə 31. Səsvermə Çərçivəsi**  
-31.1. İcma səsverməsi yalnız FAKTLARIN müəyyənində istifadə edilə bilər.  
-31.2. Səsvermə heç vaxt qaydanın mənasını dəyişə bilməz.  
-31.3. Qaydanın tətbiqi yalnız hakim səlahiyyətindədir.  
-
-**Maddə 32. Apellyasiya**  
-32.1. Yeni sübut və ya proses xətası olduqda 48 saat ərzində apellyasiya mümkündür.  
-32.2. Apellyasiya işinə müstəqil moderator baxır.  
+- Reklam qadağasının pozulması
