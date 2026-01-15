@@ -354,7 +354,7 @@ if config["features"]["xp"].get("enabled"):
             
             logger.info(f"{ctx.author.name} bet {amount}")
 
-            winner = random.random() < 0.1
+            winner = random.random() < 0.5
 
             if winner:
                 xp[bettor] += amount
